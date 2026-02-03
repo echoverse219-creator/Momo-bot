@@ -1,5 +1,14 @@
+import http from "http";
 import { Client, GatewayIntentBits } from "discord.js";
 import "dotenv/config";
+
+const PORT = process.env.PORT || 10000;
+http
+  .createServer((req, res) => {
+    res.writeHead(200, { "Content-Type": "text/plain" });
+    res.end("Bot is running ✅");
+  })
+  .listen(PORT, () => console.log("Health server running on port", PORT));
 
 const client = new Client({
   intents: [
